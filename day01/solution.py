@@ -8,6 +8,8 @@ Part 2: Calculate a similarity score based on how often each number
         from the left list appears in the right list.
 """
 
+from collections import Counter
+
 
 def parse_input(input_text: str) -> tuple[list[int], list[int]]:
     """Parse the input text into two lists of integers."""
@@ -48,8 +50,6 @@ def solve_part2(left_list: list[int], right_list: list[int]) -> int:
     For each number in the left list, multiply it by the number of times
     it appears in the right list. Sum all these products.
     """
-    from collections import Counter
-    
     right_counts = Counter(right_list)
     
     similarity_score = sum(
@@ -73,12 +73,16 @@ def solve(input_text: str) -> tuple[int, int]:
 if __name__ == "__main__":
     import sys
     
-    if len(sys.argv) > 1:
-        with open(sys.argv[1], 'r') as f:
-            input_text = f.read()
-    else:
-        input_text = sys.stdin.read()
-    
-    part1, part2 = solve(input_text)
-    print(f"Part 1: {part1}")
-    print(f"Part 2: {part2}")
+    try:
+        if len(sys.argv) > 1:
+            with open(sys.argv[1], 'r') as f:
+                input_text = f.read()
+        else:
+            input_text = sys.stdin.read()
+        
+        part1, part2 = solve(input_text)
+        print(f"Part 1: {part1}")
+        print(f"Part 2: {part2}")
+    except FileNotFoundError:
+        print(f"Error: Input file '{sys.argv[1]}' not found.", file=sys.stderr)
+        sys.exit(1)
