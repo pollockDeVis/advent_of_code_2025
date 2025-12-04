@@ -56,7 +56,7 @@ if __name__ == "__main__":
         # print(f"Digit: {digit}, Numbers: {numbers}")
 
         # Call the recursive_number_extractor with window size of 2
-        result = recursive_number_extractor(numbers, 2)
+        result = recursive_number_extractor(numbers, 12)
 
         # Detokenize the result into a single number
         result = ''.join([str(num) for num in result])
